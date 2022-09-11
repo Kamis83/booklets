@@ -1,18 +1,16 @@
-package pl.kamis83.booklet;
+package pl.kamis83.booklet.domain;
 
-import org.apache.maven.plugin.version.PluginVersionNotFoundException;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class BookletTest {
+class BookletLegacyTest {
 
     @Test
     void hasBookletNameRightAmountOfPagesForSequenceWithoutBlankSpace() {
         //given
-        Booklet booklet = new Booklet("Aneboda [12STR][12.09]Fsc mix Credit", "0,210x0,297");
+        BookletLegacy booklet = new BookletLegacy("Aneboda [12STR][12.09]Fsc Mix Credit", "0,210x0,297", 55);
         //when
-        int result = booklet.setNumberOfPages(booklet.name);
+        int result = booklet.getNumberOfPages();
         //then
         assertEquals(12, result);
 
@@ -21,9 +19,9 @@ class BookletTest {
     @Test
     void hasBookletNameRightAmountOfPagesForSequenceWithBlankSpace() {
         //given
-        Booklet booklet = new Booklet("Aneboda [ 12 STR][12.09]Fsc mix Credit", "0,210x0,297");
+        BookletLegacy booklet = new BookletLegacy("Aneboda [ 12 STR][12.09]Fsc mix Credit", "0,210x0,297", 55);
         //when
-        int result = booklet.setNumberOfPages(booklet.name);
+        int result = booklet.getNumberOfPages();
         //then
         assertEquals(12, result);
 
@@ -32,9 +30,9 @@ class BookletTest {
     @Test
     void hasBookletNameRightAmountOfPagesForSequenceWith6CharLength() {
         //given
-        Booklet booklet = new Booklet("Aneboda [ 200 STR][12.09]Fsc mix Credit", "0,210x0,297");
+        BookletLegacy booklet = new BookletLegacy("Aneboda [ 200 STR][12.09]Fsc mix Credit", "0,210x0,297", 55);
         //when
-        int result = booklet.setNumberOfPages(booklet.name);
+        int result = booklet.getNumberOfPages();
         //then
         assertEquals(200, result);
 
@@ -43,9 +41,9 @@ class BookletTest {
     @Test
     void hasBookletRightAmountOfPagesWithoutInfoInName() {
         //given
-        Booklet booklet = new Booklet("Aneboda [12.09]Fsc mix Credit", "0,210x0,297");
+        BookletLegacy booklet = new BookletLegacy("Aneboda [12.09]Fsc mix Credit", "0,210x0,297", 55);
         //when
-        int result = booklet.setNumberOfPages(booklet.name);
+        int result = booklet.getNumberOfPages();
         //then
         assertEquals(0, result);
 
@@ -54,9 +52,9 @@ class BookletTest {
     @Test
     void hasBookletRightSurfaceArea() {
         //given
-        Booklet booklet = new Booklet("Aneboda [12.09]Fsc mix Credit", "0.210x0.297");
+        BookletLegacy booklet = new BookletLegacy("Aneboda [12.09]Fsc mix Credit", "0.210x0.297", 55);
         //when
-        float result = booklet.setSurfaceArea(booklet.format);
+        float result = booklet.countSurfaceArea();
         //then
         assertEquals(0.062369994819164276, result);
 
@@ -64,9 +62,9 @@ class BookletTest {
     @Test
     void hasBookletRightSurfaceAreaWithDifferentNotationOfNumber() {
         //given
-        Booklet booklet = new Booklet("Aneboda [12.09]Fsc mix Credit", "0,210 x 0,297 x 0,420");
+        BookletLegacy booklet = new BookletLegacy("Aneboda [12.09]Fsc mix Credit", "0,210 x 0,297 x 0,420", 55);
         //when
-        float result = booklet.setSurfaceArea(booklet.format);
+        float result = booklet.countSurfaceArea();
         //then
         assertEquals(0.062369994819164276, result);
 
