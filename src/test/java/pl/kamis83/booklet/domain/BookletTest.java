@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BookletTest {
     @Test
-    void getWeight() {
+    void hasBookletGoodWeight() {
 
         //given
-        Booklet booklet = new Booklet(28,0.297,0.420,55);
+        Booklet booklet = new Booklet(28,297.0,420.0,55,"FSC mix Credit");
 
         //when
         double result = booklet.getWeight();
