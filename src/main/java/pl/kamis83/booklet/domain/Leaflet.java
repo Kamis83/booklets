@@ -2,7 +2,7 @@ package pl.kamis83.booklet.domain;
 
 import pl.kamis83.booklet.service.WeightAwareProduct;
 
-public record Sticker(double xDimension, double yDimension, int grammage, String certificate) implements WeightAwareProduct {
+public record Leaflet(double xDimension, double yDimension, int grammage, String certificate) implements WeightAwareProduct {
     @Override
     public double getWeight() {
 

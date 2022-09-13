@@ -18,10 +18,10 @@ class BookletFactoryTest {
 
         //when
         Booklet result = booklet.createBooklet("SomeProduct AA-987231-12[28 str][09.22] Fsc Mix Credit",
-                "0,297x0,420x2,22", 55);
+                "210x297x2,22", 55);
         //then
 
-        assertEquals("Booklet[pageCount=28, xDimension=0.297, yDimension=0.42, grammage=55, certificate=FSC MIX CREDIT]", result.toString());
+        assertEquals("Booklet[pageCount=28, xDimension=210.0, yDimension=297.0, grammage=55, certificate=FSC MIX CREDIT]", result.toString());
     }
     @Test
     void isBookletCorrectCreatedWithDifferentNameAndFormat() {
@@ -30,10 +30,10 @@ class BookletFactoryTest {
 
         //when
         Booklet result = booklet.createBooklet("SomeProduct AA-987231-12[28 str][09.22] Fsc Recycled Credit",
-                "297 x 420.0 x 2,22", 55);
+                "210 x 297.0 x 2,22", 55);
         //then
 
-        assertEquals("Booklet[pageCount=28, xDimension=297.0, yDimension=420.0, " +
+        assertEquals("Booklet[pageCount=28, xDimension=210.0, yDimension=297.0, " +
                 "grammage=55, certificate=FSC RECYCLED CREDIT]", result.toString());
 
 

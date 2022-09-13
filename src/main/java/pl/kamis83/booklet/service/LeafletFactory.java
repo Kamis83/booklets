@@ -1,14 +1,14 @@
 package pl.kamis83.booklet.service;
 
 import org.springframework.stereotype.Component;
-import pl.kamis83.booklet.domain.Sticker;
+import pl.kamis83.booklet.domain.Leaflet;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
-public class StickerFactory {
-    public Sticker createSticker(String name, String format, int grammage) {
+public class LeafletFactory {
+    public Leaflet createLeaflet(String name, String format, int grammage) {
 
         Pattern formatPattern = Pattern.compile("[\\d,\\.]+");
         Pattern fscPattern = Pattern.compile("FSC\\s?\\D+\\s?\\D+");
@@ -17,7 +17,7 @@ public class StickerFactory {
         double xDimension = getDimension(matcher);
         double yDimension = getDimension(matcher);
 
-        return new Sticker(xDimension, yDimension, grammage,certificate);
+        return new Leaflet(xDimension, yDimension, grammage,certificate);
     }
 
     private static String getCertificate(String name, Pattern fscPattern) {

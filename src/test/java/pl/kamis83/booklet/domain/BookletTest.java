@@ -9,7 +9,7 @@ class BookletTest {
     void hasBookletGoodWeight() {
 
         //given
-        Booklet booklet = new Booklet(28,297.0,420.0,55,"FSC mix Credit");
+        Booklet booklet = new Booklet(28,210.0,297.0,55,"FSC mix Credit");
 
         //when
         double result = booklet.getWeight();
