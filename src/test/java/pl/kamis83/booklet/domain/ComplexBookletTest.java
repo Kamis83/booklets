@@ -7,16 +7,28 @@ import static org.junit.jupiter.api.Assertions.*;
 class ComplexBookletTest {
 
     @Test
-    void getWeight() {
+    void getWeightBookletWithCoverAndMiddleUnit() {
         //given
-        ComplexBooklet complexBooklet = new ComplexBooklet(48,388,246.0,
+        ComplexBooklet complexBooklet = new ComplexBooklet(48,4,194,246.0,
                 170,90,"FSC mix Credit");
 
         //when
         double result = complexBooklet.getWeight();
 
         //then
-        assertEquals(0.0480249,result);
+        assertEquals(0.11931,result);
+
+    } @Test
+    void getWeightBookletWithCoverWithoutMiddleUnit() {
+        //given
+        ComplexBooklet complexBooklet = new ComplexBooklet(28,0,210,297,
+                0,55,"FSC mix Credit");
+
+        //when
+        double result = complexBooklet.getWeight();
+
+        //then
+        assertEquals(0.048024899999999995,result);
 
     }
 }
